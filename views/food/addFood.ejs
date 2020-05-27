@@ -1,0 +1,123 @@
+<% include ../template/header %>
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Thêm đồ ăn</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Nhập dữ liệu
+                    </div>
+                    <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form action="./addFood" method="post" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label>Tên đồ ăn:</label>
+                                            <input type="text" class="form-control"  name="name" placeholder="Nhập tên đồ ăn">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Tên cửa hàng:</label>
+                                            <input  type="text" class="form-control" name="nameStore" placeholder="Nhập giá đồ ăn">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Địa chỉ:</label>
+                                            <input  type="text" class="form-control" name="address" placeholder="Nhập địa chỉ">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Danh mục:</label>
+                                            <select class="form-control"  name="collection" >
+                                                <% data.forEach(item=>{   %>
+                                                <option value="<%=item._id %>" ><%=item.name  %></option>
+                                                <% })  %>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Mô tả:</label>
+                                            <textarea name="description" class="form-control" rows="5"></textarea>    
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Giá:</label>
+                                        <input  type="number" class="form-control" name="price" placeholder="Nhập giá đồ ăn">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Đánh giá:</label>
+                                        <input type="number" class="form-control"  name="rating" placeholder="Số lượng đánh giá" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Bookmark:</label>
+                                        <input  type="number" class="form-control" name="bookmark" placeholder="Số lượng bookmark">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Photo:</label>
+                                        <input  type="number" class="form-control" name="photo" placeholder="Số lượng  photo ">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Ảnh đồ ăn:</label>
+                                        <input  name="img" type="file">
+                                    </div>
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+                       
+                        </form>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+            <!-- /.col-lg-12 -->
+        </div>
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /#page-wrapper -->
+        </div>
+
+        <!-- /#wrapper -->
+
+        <!-- jQuery -->
+    <script src="/javascripts/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="/javascripts/bootstrap.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="/javascripts/metisMenu.min.js"></script>
+
+        <!-- DataTables JavaScript -->
+        <script src="/javascripts/dataTables/jquery.dataTables.min.js"></script>
+        <script src="/javascripts/dataTables/dataTables.bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="/javascripts/startmin.js"></script>
+
+      <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+      <script>
+        $(document).ready(function() {
+            $('#dataTables-example').DataTable({
+                    responsive: true
+            });
+        });
+    </script>
+
+    </body>
+</html>
