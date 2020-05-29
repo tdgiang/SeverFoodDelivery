@@ -39,7 +39,7 @@ router.post('/addFood',upload.single('img'), function(req, res, next) {
     name,
     nameStore,
     price ,
-    rating,
+    rating:parseFloat(rating),
     bookmark,
     photo,
     address,
@@ -55,7 +55,7 @@ router.post('/addFood',upload.single('img'), function(req, res, next) {
         if(err)
           res.json({kq:0,mess:err})
         else
-          res.redirect('/foods');
+          res.redirect('./addFood');
       })
     }
   })
@@ -104,7 +104,7 @@ router.post('/editFood',upload.single('img'), function(req, res, next) {
       name,
       nameStore,
       price ,
-      rating,
+      rating:parseFloat(rating),
       bookmark,
       photo,
       address,

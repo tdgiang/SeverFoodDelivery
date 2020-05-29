@@ -7,7 +7,9 @@ const mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var foodsRouter = require('./routes/foods');
+var apifoodsRouter = require('./routes/API/apiFoods');
 var collectionsRouter = require('./routes/collections');
+var apiCollectionsRouter = require('./routes/API/apiCollections');
 
 var app = express();
 
@@ -36,6 +38,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/foods', foodsRouter);
 app.use('/collections', collectionsRouter);
+app.use('/apifoods', apifoodsRouter);
+app.use('/apicollections', apiCollectionsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
