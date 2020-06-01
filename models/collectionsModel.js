@@ -1,6 +1,5 @@
 const mongoose =require('mongoose');
 
-
 var collectionsSchema=new mongoose.Schema({
     name:{
         type:String,

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var collections=require('../../models/collectionsModel');
-var foodMoel=require('../../models/foodModel');
+var foodModel=require('../../models/foodModel');
 
 
 router.get('/', function(req, res, next) {
