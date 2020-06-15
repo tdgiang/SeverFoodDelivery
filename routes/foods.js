@@ -99,6 +99,7 @@ router.get('/editFood/:id', function(req, res, next) {
 router.post('/editFood', function(req, res, next) {
   let {id,name,nameStore,price,rating,collection,bookmark,photo,address,description,range,images,popular}=req.body;
   let resultPopular;
+  let arrImg=images.split(',');
   if(popular)
     resultPopular=true;
   else
@@ -113,7 +114,7 @@ router.post('/editFood', function(req, res, next) {
       address,
       description,
       range:parseFloat(range),
-      images,
+      images:arrImg,
       popular:resultPopular
   },err=>{
     if(err)

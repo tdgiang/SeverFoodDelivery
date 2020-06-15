@@ -32,7 +32,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Khoảng cách:</label>
-                                            <input  type="number" class="form-control" value="<%= data.range %>" name="range" placeholder="Nhập địa chỉ">
+                                            <input  type="text" class="form-control" value="<%= data.range %>" name="range" placeholder="Nhập địa chỉ">
                                         </div>
                                         <div class="form-group">
                                             <label>Danh mục:</label>
@@ -78,7 +78,7 @@
                                     <div class="form-group">
                                         <label>Ảnh đồ ăn:</label>
                                         <textarea name="images"  class="form-control" rows="5">
-                                            <%= data.images %>
+                                            <%= data.images.length!=0?data.images:"" %>
                                         </textarea>    
                                     </div>
                                 </div>
