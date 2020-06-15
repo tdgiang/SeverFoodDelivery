@@ -17,7 +17,7 @@
                     <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form action="./" method="post" enctype="multipart/form-data">
+                                    <form action="./" method="post">
                                         <div class="form-group">
                                             <label>Tên đồ ăn:</label>
                                             <input type="text" class="form-control" value="<%= data.name %>"  name="name" placeholder="Nhập tên đồ ăn">
@@ -29,6 +29,10 @@
                                         <div class="form-group">
                                             <label>Địa chỉ:</label>
                                             <input  type="text" class="form-control" value="<%= data.address %>" name="address" placeholder="Nhập địa chỉ">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Khoảng cách:</label>
+                                            <input  type="number" class="form-control" value="<%= data.range %>" name="range" placeholder="Nhập địa chỉ">
                                         </div>
                                         <div class="form-group">
                                             <label>Danh mục:</label>
@@ -67,8 +71,15 @@
                                         <input  type="number" class="form-control" name="photo" value="<%= data.photo %>" placeholder="Số lượng  photo ">
                                     </div>
                                     <div class="form-group">
+                                        <label>Món nổi bật:</label>
+                                        <% let checked = data.popular ? "checked" : "" %>
+                                        <input  type="checkbox" class="form-control"   name="popular" placeholder="Số lượng  photo"  <%= checked %>  >
+                                    </div>
+                                    <div class="form-group">
                                         <label>Ảnh đồ ăn:</label>
-                                        <input  name="img" type="file">
+                                        <textarea name="images"  class="form-control" rows="5">
+                                            <%= data.images %>
+                                        </textarea>    
                                     </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->

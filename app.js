@@ -10,23 +10,23 @@ var foodsRouter = require('./routes/foods');
 var apifoodsRouter = require('./routes/API/apiFoods');
 var collectionsRouter = require('./routes/collections');
 var apiCollectionsRouter = require('./routes/API/apiCollections');
+var apiUsersRouter = require('./routes/API/apiUsers');
 
 var app = express();
 
-mongoose.connect('mongodb+srv://giang:3TpUD1d5ywaNehej@cluster0-afnwl.mongodb.net/FoodDelivery?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true},(err)=>{
+mongoose.connect('mongodb+srv://test:3ewAfrnPp7t4F1c8@cluster0-afnwl.mongodb.net/FoodDelivery?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true,useFindAndModify:false},(err)=>{
   if(err){
-    res.join({kq:0,mess:err})
+    console.log(err);
   }else{
     console.log("Connect database success!");
   }
 });
-
+ 
 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -40,6 +40,7 @@ app.use('/foods', foodsRouter);
 app.use('/collections', collectionsRouter);
 app.use('/apifoods', apifoodsRouter);
 app.use('/apicollections', apiCollectionsRouter);
+app.use('/apiusers',apiUsersRouter );
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

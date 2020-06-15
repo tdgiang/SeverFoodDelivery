@@ -11,7 +11,6 @@ const foodSchema=new mongoose.Schema({
     },
     img:{
         type:String,
-        required:true
     },
     price:{
         type:Number,
@@ -34,15 +33,28 @@ const foodSchema=new mongoose.Schema({
         type:String
     },
     status:{
-        type:[{
+        type:{
             type:String,
             enum:['available','unavailable']
-        }],
+        },
         default:['available']
     },
     nameStore:{
         type:String
+    },
+    popular:{
+        type:Boolean,
+        default:false
+    },
+    range:{
+        type:Number,
+        required:true
+    },
+    images:{
+        type:[{type:String}],
+        required:true
     }
+
 
 })
 

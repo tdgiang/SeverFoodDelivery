@@ -2,16 +2,7 @@ var express = require('express');
 var router = express.Router();
 const foods=require('../models/foodModel');
 const collections=require('../models/collectionsModel');
-var multer  = require('multer')
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, './public/images/collections')
-    },
-    filename: function (req, file, cb) {
-      cb(null,Date.now() + '-'+ file.originalname)
-    }
-  })
-var upload = multer({ storage: storage })
+ 
 /* GET home page. */
 router.get('/', function(req, res, next) {
     foods.find({},(err,data)=>{
@@ -32,9 +23,14 @@ router.get('/addFood', function(req, res, next) {
   })
   
 });
-
-router.post('/addFood',upload.single('img'), function(req, res, next) {
-  let {name,nameStore,price,rating,collection,bookmark,photo,address,description}=req.body;
+router.post('/addFood', function(req, res, next) {
+  let {name,nameStore,price,rating,collection,bookmark,photo,address,description,range,images,popular}=req.body;
+  let arrImg=images.split(',');
+  let resultPopular;
+  if(popular)
+    resultPopular=true;
+  else
+    resultPopular=false
   let food=new foods({
     name,
     nameStore,
@@ -44,7 +40,9 @@ router.post('/addFood',upload.single('img'), function(req, res, next) {
     photo,
     address,
     description,
-    img:req.file.path.slice(6)
+    range:parseFloat(range),
+    images:arrImg,
+    popular:resultPopular
   })
   
   food.save(err=>{
@@ -75,6 +73,7 @@ router.get('/deleteFood/:id', function(req, res, next) {
 
 });
 
+
 router.get('/editFood/:id', function(req, res, next) {
   
   foods.findById(req.params.id,(err,data)=>{
@@ -97,9 +96,13 @@ router.get('/editFood/:id', function(req, res, next) {
 
 });
 
-router.post('/editFood',upload.single('img'), function(req, res, next) {
-  let {id,name,nameStore,price,rating,collection,bookmark,photo,address,description}=req.body;
-  console.log(id);
+router.post('/editFood', function(req, res, next) {
+  let {id,name,nameStore,price,rating,collection,bookmark,photo,address,description,range,images,popular}=req.body;
+  let resultPopular;
+  if(popular)
+    resultPopular=true;
+  else
+    resultPopular=false
   foods.findByIdAndUpdate(id,{
       name,
       nameStore,
@@ -109,7 +112,9 @@ router.post('/editFood',upload.single('img'), function(req, res, next) {
       photo,
       address,
       description,
-      img:req.file.path.slice(6)
+      range:parseFloat(range),
+      images,
+      popular:resultPopular
   },err=>{
     if(err)
       res.json({kq:0,mess:err})
@@ -147,5 +152,6 @@ router.post('/editFood',upload.single('img'), function(req, res, next) {
 });
 
 
+ 
 
 module.exports = router;
