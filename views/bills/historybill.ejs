@@ -1,0 +1,134 @@
+<% include ../template/header %>
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Đơn hàng đang xử lý</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Danh sách đơn hàng
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>Khách hàng</th>
+                                        <th>Đồ ăn</th>
+                                        <th>Giá</th>
+                                        <th>Số lượng</th>
+                                        <th>Tên quán</th>
+                                        <th>Tổng thu(VND)</th>
+                                        <th>Thanh toán</th>
+                                        <th>Chức năng</th>
+                                    </tr>
+                                </thead>
+                                <thead>
+                                    <tr>
+                                        <tr>
+                                            
+                                            <td rowspan="2">ID</td>
+                                            <td rowspan="2">Can tho</td>
+                                            <td>vo goi om cac loai</td>
+                                            <td>3000</td>
+                                            <td>2</td>
+                                            <td   rowspan="2" > 3000</td>
+                                            <td   rowspan="2" > 3000</td>
+                                            <td rowspan="2"  >0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>vo goi om cac loai</td>
+                                            <td>3000</td>
+                                            <td>2</td>
+                                        </tr>
+                                    </tr>
+                                    <!-- <% data.forEach(item=>{  %>
+                                    <tr>
+                                        <tr>
+                                            <td rowspan="<%= item.arrFoods.length  %>"><%= item.arrFoods.length  %></td>
+                                            <td rowspan="<%= item.arrFoods.length  %>">Can tho</td>
+                                            <td><%= item.arrFoods[0].id  %></td>
+                                            <td><%= item.arrFoods[0].count  %></td>
+                                            <td>2</td>
+                                            <td   rowspan="<%= item.arrFoods.length  %>" > <%= item.total  %></td>
+                                            <td   rowspan="<%= item.arrFoods.length  %>" > <%= item.cardPayMethod?"Bằng thẻ":"Khi nhận hàng"  %></td>
+                                            <td rowspan="<%= item.arrFoods.length  %>"  >
+                                                <p>
+                                                    <a href="/bills/editbill/<%=item._id%>"><i  class="fa fa-edit " aria-hidden="true">&nbsp;</i></a>
+                                                   </p>
+                                                   <p>
+                                                    <a href="/bills/deletebill/<%=item._id%>"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                   </p>
+                                            </td>
+                                        </tr>
+                                        <%  item.arrFoods.slice(1).forEach(food=>{   %>
+                                        <tr>
+                                            <td>vo goi om cac loai</td>
+                                            <td>3000</td>
+                                            <td>2</td>
+                                        </tr>
+
+                                        <%    })   %>
+                                       
+                                    </tr>
+                                    <% })   %> -->
+
+                                
+                                </thead>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</div>
+            <!-- /.col-lg-12 -->
+        </div>
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /#page-wrapper -->
+        </div>
+
+        <!-- /#wrapper -->
+
+        <!-- jQuery -->
+    <script src="/javascripts/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="/javascripts/bootstrap.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="/javascripts/metisMenu.min.js"></script>
+
+        <!-- DataTables JavaScript -->
+        <script src="/javascripts/dataTables/jquery.dataTables.min.js"></script>
+        <script src="/javascripts/dataTables/dataTables.bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="/javascripts/startmin.js"></script>
+
+      <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+      <script>
+        $(document).ready(function() {
+            $('#dataTables-example').DataTable({
+                    responsive: true
+            });
+        });
+    </script>
+
+    </body>
+</html>

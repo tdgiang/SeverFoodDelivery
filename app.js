@@ -6,11 +6,13 @@ var logger = require('morgan');
 const mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var billRouter = require('./routes/bills');
 var foodsRouter = require('./routes/foods');
 var apifoodsRouter = require('./routes/API/apiFoods');
 var collectionsRouter = require('./routes/collections');
 var apiCollectionsRouter = require('./routes/API/apiCollections');
 var apiUsersRouter = require('./routes/API/apiUsers');
+var apiBillsRouter = require('./routes/API/apiBills');
 
 var app = express();
 
@@ -37,10 +39,12 @@ app.use(express.static('/'));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/foods', foodsRouter);
+app.use('/bills', billRouter);
 app.use('/collections', collectionsRouter);
 app.use('/apifoods', apifoodsRouter);
 app.use('/apicollections', apiCollectionsRouter);
 app.use('/apiusers',apiUsersRouter );
+app.use('/apibills',apiBillsRouter );
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

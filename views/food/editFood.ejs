@@ -36,8 +36,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Danh mục:</label>
-                                            <select class="form-control"   name="collection" >
-                                                <% dataListFood.forEach(item=>{   %>
+                                            <select class="form-control"   name="collection" >]                        <% dataListFood.forEach(item=>{   %>
                                                 <option value="<%=item._id %>" ><%=item.name  %></option>
                                                 <% })  %>
                                             </select>
@@ -77,8 +76,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Ảnh đồ ăn:</label>
-                                        <textarea name="images"  class="form-control" rows="5">
-                                            <%= data.images.length!=0?data.images:"" %>
+                                        <textarea name="images"  class="form-control" rows="5"><%=data.images.toString()%>
                                         </textarea>    
                                     </div>
                                 </div>
