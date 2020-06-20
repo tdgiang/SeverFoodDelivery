@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Đơn hàng đang xử lý</h1>
+                <h1 class="page-header">Lịch sử đơn hàng</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -32,37 +32,18 @@
                                 </thead>
                                 <thead>
                                     <tr>
-                                        <tr>
-                                            
-                                            <td rowspan="2">ID</td>
-                                            <td rowspan="2">Can tho</td>
-                                            <td>vo goi om cac loai</td>
-                                            <td>3000</td>
-                                            <td>2</td>
-                                            <td   rowspan="2" > 3000</td>
-                                            <td   rowspan="2" > 3000</td>
-                                            <td rowspan="2"  >0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>vo goi om cac loai</td>
-                                            <td>3000</td>
-                                            <td>2</td>
-                                        </tr>
-                                    </tr>
-                                    <!-- <% data.forEach(item=>{  %>
-                                    <tr>
-                                        <tr>
-                                            <td rowspan="<%= item.arrFoods.length  %>"><%= item.arrFoods.length  %></td>
-                                            <td rowspan="<%= item.arrFoods.length  %>">Can tho</td>
-                                            <td><%= item.arrFoods[0].id  %></td>
+                                        <% data.forEach(item=>{  %>
+                                            <td rowspan="<%= item.arrFoods.length  %>">
+                                                <p><%= item.contact.name  %> sdt:<%= item.contact.phone  %></p>
+                                                <p><%= item.contact.address  %></p>
+                                            </td>
+                                            <td> <%= item.arrFoods[0].name  %></td>
+                                            <td><%= item.arrFoods[0].price  %></td>
                                             <td><%= item.arrFoods[0].count  %></td>
-                                            <td>2</td>
+                                            <td><%= item.arrFoods[0].nameStore  %></td>
                                             <td   rowspan="<%= item.arrFoods.length  %>" > <%= item.total  %></td>
                                             <td   rowspan="<%= item.arrFoods.length  %>" > <%= item.cardPayMethod?"Bằng thẻ":"Khi nhận hàng"  %></td>
                                             <td rowspan="<%= item.arrFoods.length  %>"  >
-                                                <p>
-                                                    <a href="/bills/editbill/<%=item._id%>"><i  class="fa fa-edit " aria-hidden="true">&nbsp;</i></a>
-                                                   </p>
                                                    <p>
                                                     <a href="/bills/deletebill/<%=item._id%>"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                                    </p>
@@ -70,17 +51,19 @@
                                         </tr>
                                         <%  item.arrFoods.slice(1).forEach(food=>{   %>
                                         <tr>
-                                            <td>vo goi om cac loai</td>
-                                            <td>3000</td>
-                                            <td>2</td>
+                                            <td> <%= food.name  %></td>
+                                            <td><%= food.price  %></td>
+                                            <td><%= food.count  %></td>
+                                            <td><%= food.nameStore  %></td>
                                         </tr>
 
                                         <%    })   %>
                                        
                                     </tr>
-                                    <% })   %> -->
+                                    
+                                        <%  })  %>
+                                    </tr>
 
-                                
                                 </thead>
                             </table>
                         </div>
