@@ -30,7 +30,7 @@
                                         <th>Tác vụ</th>
                                     </tr>
                                 </thead>
-                                <thead>
+                                <tbody>
                                     <% data.forEach(item=>{  %>
                                     <tr >
                                        <td><img  width="200" height="140" src="<%= item.img  %>" alt=""></td>
@@ -50,7 +50,7 @@
                                         </td>
                                     </tr>
                                     <% })   %>
-                                </thead>
+                                </tbody>
                             </table>
                         </div>
                         <!-- /.table-responsive -->
@@ -94,7 +94,7 @@
       <script>
         $(document).ready(function() {
             $('#dataTables-example').DataTable({
-                    responsive: true
+                    
             });
         });
     </script>
