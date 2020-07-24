@@ -35,6 +35,10 @@ var userSchema=new mongoose.Schema({
     createDay:{
         type:Date,
         default:Date.now
+    },
+    author:{
+        type:Number,
+        default:2
     }
 
 })
