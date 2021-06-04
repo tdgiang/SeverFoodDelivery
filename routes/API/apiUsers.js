@@ -1,65 +1,52 @@
-const express=require('express');
-const router=express.Router();
-const users=require('../../models/userModel');
-const bcrypt = require('bcrypt');
+const express = require("express");
+const router = express.Router();
+const users = require("../../models/userModel");
+const Clazz = require("../../models/classModel");
+const deparments = require("../../models/departmentModel");
+var validator = require("validator");
+const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
+router.post("/student-login", function (req, res, next) {
+  const { id_St, password } = req.body;
 
-router.get('/', function(req, res, next) {
-    users.find({},(err,data)=>{
-        if(err)
-            res.json({kq:0,mess:err})
-        else
-            res.json({kq:1,data})
-    })
-});
-router.post('/login', function(req, res, next) {
-    users.findOne({userName:req.body.userName},(err,data)=>{
-        if(err)
-            res.json({kq:0,mess:err})
-        else{
-            bcrypt.compare(req.body.passWord, data.passWord)
-            .then(function(result) {
-                if(result)
-                    res.json({kq:1,user:data})
-                else
-                    res.json({kq:0})
-            });
-        }
-    })
-});
-
-router.post('/edit', function(req, res, next) {
-    const {userName,dateOfBirth,gender,name,phone,address}=req.body;
-   users.findOneAndUpdate({userName:userName},{dateOfBirth:dateOfBirth,phone:phone,gender:gender,name:name,address:address},(err,user)=>{
-       if(err)
-            res.json({kq:0,mess:err})
-        else
-            res.json({kq:1,user})
-   })
-});
-router.post('/', function(req, res, next) {
-    const {userName,passWord,name,phone,address}=req.body;
-    bcrypt.hash(passWord, saltRounds)
-    .then(function(hash) {
-        let user=new users({
-            userName,
-            passWord:hash,
-            name,
-            phone,
-            address
-        })
-        user.save((err,user)=>{
-            if(err)
-                res.json({kq:0,mess:err})
-            else
-                res.json({kq:1,user})
-        })
+  if (validator.isEmpty(id_St))
+    res.json({
+      code: 400,
+      message: "Truyền thiếu tham số",
     });
-    
-    
-
+  if (validator.isEmpty(password))
+    res.json({
+      code: 400,
+      message: "Truyền thiếu tham số",
+    });
+  users
+    .findOne({ id_St, password })
+    .populate("class")
+    .populate("department")
+    .exec((err, data) => {
+      console.log(err);
+      if (err) {
+        res.json({
+          code: 400,
+          message: "Sai thông tin đăng nhập",
+        });
+      } else {
+        if (data) {
+          res.json({
+            code: 200,
+            data,
+            message: "Lấy dữ liệu thành công",
+          });
+        } else {
+          res.json({
+            code: 200,
+            message: "Sai thông tin đăng nhập",
+            data: null,
+          });
+        }
+      }
+    });
 });
 
-
-module.exports =router;
+module.exports = router;
