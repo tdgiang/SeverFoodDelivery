@@ -45,9 +45,9 @@ app.use("/api/news", apiNewsRouter);
 app.use("/api/scholarships", apiScholarshipRouter);
 app.use("/api/hoatdongs", apiHoatDongRouter);
 
-// app.listen(3000, () => {
-//   console.log(`Example app listening at http://localhost:3000`);
-// });
+app.listen(process.env.PORT, () => {
+  console.log(`Example app listening `);
+});
 
 io.on("connection", (socket) => {
   console.log("Vua co nguoi ket noi " + socket);
