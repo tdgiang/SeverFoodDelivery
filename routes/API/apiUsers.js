@@ -49,4 +49,36 @@ router.post("/student-login", function (req, res, next) {
     });
 });
 
+router.get("/get-list-users", function (req, res, next) {
+  const { id } = req.query;
+  users
+    .find({})
+    .populate("class")
+    .populate("department")
+    .exec((err, data) => {
+      if (err) {
+        res.json({
+          code: 400,
+          message: "Sai thông tin đăng nhập",
+        });
+      } else {
+        if (data) {
+          const newList = data.filter((e) => e.id_St != id);
+
+          res.json({
+            code: 200,
+            data: newList,
+            message: "Lấy dữ liệu thành công",
+          });
+        } else {
+          res.json({
+            code: 200,
+            message: "Sai thông tin đăng nhập",
+            data: null,
+          });
+        }
+      }
+    });
+});
+
 module.exports = router;

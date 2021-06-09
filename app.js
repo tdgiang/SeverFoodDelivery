@@ -49,6 +49,10 @@ app.listen(process.env.PORT, () => {
   console.log(`Example app listening `);
 });
 
+// app.listen(3000, () => {
+//   console.log(`Example app listening `);
+// });
+
 io.on("connection", (socket) => {
   console.log("Vua co nguoi ket noi " + socket);
 });
