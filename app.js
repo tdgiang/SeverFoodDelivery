@@ -11,7 +11,7 @@ var apiUsersRouter = require("./routes/API/apiUsers");
 var apiNewsRouter = require("./routes/API/apiNews");
 var apiScholarshipRouter = require("./routes/API/apiScholarships");
 var apiHoatDongRouter = require("./routes/API/apiHoatDong");
-
+var apiMessagesRouter = require("./routes/API/apiMessages");
 var app = express();
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
@@ -44,14 +44,15 @@ app.use("/api/users", apiUsersRouter);
 app.use("/api/news", apiNewsRouter);
 app.use("/api/scholarships", apiScholarshipRouter);
 app.use("/api/hoatdongs", apiHoatDongRouter);
+app.use("/api/messages", apiMessagesRouter);
 
 app.listen(process.env.PORT, () => {
   console.log(`Example app listening `);
 });
 
-// app.listen(3000, () => {
-//   console.log(`Example app listening `);
-// });
+app.listen(3000, () => {
+  console.log(`Example app listening `);
+});
 
 io.on("connection", (socket) => {
   console.log("Vua co nguoi ket noi " + socket);

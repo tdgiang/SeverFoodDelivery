@@ -63,6 +63,7 @@ router.get("/get-list-users", function (req, res, next) {
         });
       } else {
         if (data) {
+          
           const newList = data.filter((e) => e.id_St != id);
 
           res.json({
