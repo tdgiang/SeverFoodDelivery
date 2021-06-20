@@ -62,5 +62,8 @@ var userSchema = new Schema({
   status: {
     type: Number,
   },
+  message: {
+    type: String,
+  },
 });
 module.exports = mongoose.model("users", userSchema);
