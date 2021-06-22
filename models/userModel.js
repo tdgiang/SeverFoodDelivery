@@ -63,7 +63,8 @@ var userSchema = new Schema({
     type: Number,
   },
   message: {
-    type: String,
+    type: ObjectId,
+    ref: "messages",
   },
 });
 module.exports = mongoose.model("users", userSchema);

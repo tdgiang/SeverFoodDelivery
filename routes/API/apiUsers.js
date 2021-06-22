@@ -109,6 +109,7 @@ router.get("/get-list-users", function (req, res, next) {
     .find({})
     .populate("class")
     .populate("department")
+    .populate("message")
     .exec((err, data) => {
       if (err) {
         res.json({
