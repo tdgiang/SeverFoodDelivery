@@ -12,6 +12,8 @@ var apiNewsRouter = require("./routes/API/apiNews");
 var apiScholarshipRouter = require("./routes/API/apiScholarships");
 var apiHoatDongRouter = require("./routes/API/apiHoatDong");
 var apiMessagesRouter = require("./routes/API/apiMessages");
+var apiJobs = require("./routes/API/apiJobs");
+
 var app = express();
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
@@ -45,7 +47,7 @@ app.use("/api/news", apiNewsRouter);
 app.use("/api/scholarships", apiScholarshipRouter);
 app.use("/api/hoatdongs", apiHoatDongRouter);
 app.use("/api/messages", apiMessagesRouter);
-
+app.use("/api/jobs", apiJobs);
 app.listen(process.env.PORT, () => {
   console.log(`Example app listening `);
 });
